@@ -32,3 +32,13 @@ link_directories(/opt/homebrew/opt/libsndfile/lib)
 # Add executable for main.swift (if you want to build and run it)
 # add_executable(WhisperSwiftApp main.swift)
 # target_link_libraries(WhisperSwiftApp whisper_wrapper)
+
+# GoogleTest integration for unit testing
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS} /opt/homebrew/include)
+link_directories(/opt/homebrew/lib)
+
+# Test target for transcribe
+add_executable(test_transcribe Tests/test_transcribe.cpp)
+target_include_directories(test_transcribe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Sources)
+target_link_libraries(test_transcribe whisper_wrapper ${GTEST_LIBRARIES} pthread)
