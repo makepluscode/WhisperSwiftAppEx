@@ -18,6 +18,16 @@ target_link_libraries(whisper_wrapper whisper /opt/homebrew/opt/libsndfile/lib/l
 include_directories(/opt/homebrew/opt/libsndfile/include)
 link_directories(/opt/homebrew/opt/libsndfile/lib)
 
+# === whisper_wrapper 정적 라이브러리 (iOS/Swift 연동용) ===
+add_library(whisper_wrapper_static STATIC
+    Sources/WhisperWrapper.cpp
+)
+target_include_directories(whisper_wrapper_static PRIVATE
+    /Users/bginess/Workspace/whisper.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Sources
+)
+target_link_libraries(whisper_wrapper_static whisper /opt/homebrew/opt/libsndfile/lib/libsndfile.a)
+
 # === GoogleTest 통합 ===
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS} /opt/homebrew/include)
