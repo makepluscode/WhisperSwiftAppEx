@@ -2,7 +2,7 @@
 //  WhisperSwiftAppApp.swift
 //  WhisperSwiftApp
 //
-//  Created by 김병규 on 7/19/25.
+//  Created makepluscode on 7/19/25.
 //
 
 import SwiftUI
